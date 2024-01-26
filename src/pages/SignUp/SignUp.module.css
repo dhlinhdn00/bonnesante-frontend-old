@@ -1,0 +1,153 @@
+.page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  width: 100%;
+  background: #fff;
+  overflow: hidden;
+  font-family: Nunito Sans;
+}
+
+.container {
+  margin: 0 auto;
+  width: 85%;
+  max-width: 1000px;
+}
+
+.image {
+  width: 90%;
+}
+
+.form__header {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 30px;
+  color: #363636;
+  margin-bottom: 20px;
+  margin-top: 80px;
+}
+
+.form input {
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  border: 1px solid #635c5c;
+  padding: 0 20px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #363636;
+  font-family: Nunito Sans;
+}
+
+.form__error {
+  color: #e71e50;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.5px;
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.form__link {
+  float: right;
+  margin-top: 10px;
+}
+
+.form__link a {
+  color: #e71e50;
+  font-weight: bold;
+}
+
+.form__button {
+  width: 100%;
+  height: 50px;
+  border-radius: 100px;
+  background: #e71e50;
+  border: none;
+  color: #fff;
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  margin-top: 20px;
+  font-family: Nunito Sans;
+}
+
+.signup__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.signup__text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.5px;
+  text-align: center;
+  color: #363636;
+  font-family: Nunito Sans;
+}
+
+.signup__text__line {
+  background: linear-gradient(269.97deg, #0b6efe 4.18%, rgba(196, 196, 196, 0) 77.28%);
+  height: 2px;
+  width: 30%;
+  display: block;
+}
+
+.signup__container__link {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.signup__link:hover {
+  cursor: pointer;
+}
+
+.signup__image {
+  width: 10%;
+  object-fit: cover;
+  border-radius: 50px;
+  margin-right: 10px;
+}
+
+.decoration {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.decoration svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 257px;
+  transform: rotateY(180deg);
+}
+
+.decoration .shape_fill {
+  fill: #efb4c5;
+}
+
+/** For mobile devices **/
+@media (max-width: 767px) {
+  .decoration svg {
+    width: calc(100% + 1.3px);
+    height: 60px;
+  }
+}
+
+@media (min-width: 992px) {
+  .decoration {
+    display: none;
+  }
+}

@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'Nunito Sans';
+  src: url('../../assets/fonts/Nunito_Sans/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf') format('truetype');
+  /* Add additional font formats if needed */
+  font-weight: 100 900; /* Specify the font weight range */
+  font-stretch: 75% 125%; /* Specify the font width range (optional) */
+  font-style: normal; /* You can also specify 'italic' for italics */
+}

@@ -1,0 +1,22 @@
+.videoElement.active {
+  width: 200px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 8px solid red;
+}
+
+.videoElement {
+  width: 200px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.videoCamera {
+  min-width: 200px;
+  min-height: 380px;
+  margin: 10px auto;
+  position: relative;
+  border-radius: 50%;
+}

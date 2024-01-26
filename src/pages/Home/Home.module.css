@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+}
+.container h1 {
+    font-size: 2rem;
+    font-weight: 1000;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.start_measure {
+    position: relative;
+    width: 80%;
+    height: 20rem;
+    background-image: url("../../assets/images/heart-icon-3d.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    animation: beat 1s ease infinite;
+}
+.text_overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 1000;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.5;
+}
+.card_options {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.card {
+    width: 90%;
+    height: 10rem;
+    margin-bottom: 1rem;
+    background-color: #e71e50;
+    border-radius: 1rem;
+    border: 1px solid #e71e50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+}
+
+.card p {
+    color: #fff;
+    font-weight: 1000;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.5;
+}
+.card img {
+    width: 70px;
+    object-fit: cover;
+}
+.card ion-icon {
+    font-size: 58px;
+    color: #fff;
+}
+@keyframes beat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+
+@media(min-width:500px){
+    .start_measure {
+        width:46%;
+    }
+}
+@media(min-width:992px){
+    .start_measure {
+        width: 24%;
+    }
+}
+

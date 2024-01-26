@@ -1,0 +1,249 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.page {
+    width: 100%;
+    background: #fff;
+    font-family: Nunito Sans;
+}
+
+.container {
+    margin: 0 auto;
+    width: 85%;
+    max-width: 1000px;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    background-color: #E2E6EE;
+    border-radius: 24px;
+    margin-bottom: 20px;
+}
+
+.content img {
+    width: 100%;
+    min-width: 85%;
+    min-height: 400px;
+    object-fit: cover;
+    justify-self: center;
+}
+
+.content h3 {
+    font-size: 20px;
+    color: #000;
+    margin: 20px 0;
+    justify-self: center;
+    font-family: Nunito Sans;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: -0.5px;
+}
+
+.content p {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: -0.5px;
+    text-align: center;
+    color: #596479;
+}
+
+.button {
+    width: 100%;
+    border-radius: 100px;
+    background: #e71e50;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+.data_container {
+   width: 100%;
+
+    text-align: center;
+    padding: 20px;
+    background-color: #E2E6EE;
+    border-radius: 24px;
+}
+
+.container h1 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: -0.5px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.loading_data {
+    width: 100%;
+    min-height: 645px;
+    display: grid;
+}
+
+.data_section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.data_section strong {
+    font-size: 32px;
+    font-weight: 1000;
+}
+
+.data_item {
+    width: calc(100% / 3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.data_item p, .data_item svg {
+    color: #596479;
+}
+
+.data_circle_overlay {
+    width: 20vw;
+    height: 20vw;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 15px;
+    background-color: #fff;
+}
+
+.data_circle {
+    width: 16vw;
+    height: 16vw;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.center_overlay {
+    width: 28vw;
+    height: 28vw;
+}
+
+.center {
+    width: 23vw;
+    height: 23vw;
+    font-size: 18px;
+}
+
+.center strong {
+    font-size: 50px;
+}
+
+.red {
+    background-color: #ff4b5c;
+    color: white;
+}
+
+.yellow {
+    background-color: #ffcc00;
+    color: white;
+}
+
+.green {
+    background-color: #4caf50;
+    color: white;
+}
+
+.red_overlay {
+    background-color: #FF32324D;
+    color: white;
+}
+
+.yellow_overlay {
+    background-color: #E8C4094D;
+    color: white;
+}
+
+.green_overlay {
+    background-color: #65DB3B4D;
+    color: white;
+}
+
+.data_status_container {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.data_status_item {
+    width: 100%;
+}
+
+.status_title {
+    float: left;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: -0.5px;
+    color: #596479;
+}
+
+.status_value {
+    float: right;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: -0.5px;
+    color: #4caf50;
+}
+
+.chart {
+    width: 100%;
+    background-color: #fff;
+    border: #5b5959 1px solid;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.chart canvas {
+    position: unset !important;
+    transform: none !important;
+    width: 100%;
+}
+
+.breath_icon {
+    width: 24px;
+    height: 24px;
+    fill: #596479;
+}
+.data_status_container canvas  {
+    position: unset !important;
+    transform: none !important;
+    width: 300px !important;
+    height: 300px !important;
+    object-fit: fill;
+}
+
+@media (min-width:1140px){
+    .chart canvas {
+        max-width: 1000px;
+    }    
+    .data_container{
+        max-width: 1000px;
+    }
+}

@@ -1,0 +1,38 @@
+.header {
+  width: 100%;
+  height: 50px;
+  background-color: #e2e6ee;
+  border-radius: 30px;
+  display: grid;
+  grid-template-columns: 10% 20% 40% 20% 10%;
+  align-items: center;
+  margin: 20px auto;
+  padding: 10px 20px;
+}
+
+.header h3 {
+  font-size: 12px;
+  font-weight: 600;
+  color: #000;
+  justify-self: center;
+}
+
+.header ion-icon {
+  font-size: 22px;
+  color: #000;
+}
+.header img {
+  width: 40px;
+  height: 30px;
+  justify-self: center;
+}
+
+.logout {
+  justify-self: end;
+}
+
+@media (min-width: 992px) {
+  .header h3 {
+    font-size: 16px;
+  }
+}
