@@ -3,6 +3,7 @@ import style from './AddData.module.css'
 import { useNavigate } from 'react-router-dom'
 import HeaderBar from '../../components/HeaderBar/HeaderBar'
 import doctorIcon from '../../assets/images/addData.png'
+
 const AddData = () => {
   let navigater = useNavigate()
   return (
