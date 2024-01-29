@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import useUserContext from '../../hooks/useUserContext'
 import LogoBK from "../../assets/images/LogoDHBK.jpg";
 import LogoFast from "../../assets/images/FAST.png";
+
 const HeaderBar = () => {
     const user = useUserContext();
     const username = user ? user.username : null;

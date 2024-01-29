@@ -17,6 +17,8 @@ import Chart from './pages/Result/Chart.jsx'
 import ResultPage from './pages/Result/ResultPage.jsx'
 import { PieChart } from './pages/Result/PieChart.jsx'
 import VideoCallPage from './pages/Patient/VideoCallPage.jsx'
+import ProtectedRoutes from './utils/ProtectedRoutes.jsx'
+import CheckScheduled from './pages/Doctors/CheckScheduled/CheckScheduled.jsx'
 
 const rootElement = document.getElementById('root')
 if (rootElement) {
@@ -28,13 +30,44 @@ if (rootElement) {
           <Route path='/' element={<Welcome />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<SignUp />} />
-          <Route path='/add-data' element={<AddData />} />
-          <Route path='/load-result' element={<LoadResult />} />
-          <Route path='/history' element={<ListResult />} />
-          <Route path='/result' element={<ResultPage/>} />
-          <Route path='/chart' element={<PieChart/>} />
-          <Route path='/home' element={<Home />} />
-          <Route path='/patient/video-call' element={<VideoCallPage />} />
+          <Route path='/add-data' element={
+            <ProtectedRoutes>
+              <AddData />
+            </ProtectedRoutes>
+          } />
+          <Route path='/load-result' element={
+            <ProtectedRoutes>
+              <LoadResult />
+            </ProtectedRoutes>
+          } />
+          <Route path='/history' element={
+            <ProtectedRoutes>
+              <ListResult />
+            </ProtectedRoutes>
+          } />
+          <Route path='/result' element={
+            <ProtectedRoutes>
+              <ResultPage />
+            </ProtectedRoutes>
+          } />
+          <Route path='/chart' element={
+            <ProtectedRoutes>
+              <PieChart />
+            </ProtectedRoutes>} />
+          <Route path='/home' element={
+            <ProtectedRoutes>
+              <Home />
+            </ProtectedRoutes>} />
+
+          <Route path='/videoCall' element={
+            <ProtectedRoutes>
+              <VideoCallPage />
+            </ProtectedRoutes>} />
+          <Route path='/checkScheduled' element={
+            <ProtectedRoutes>
+              <CheckScheduled />
+            </ProtectedRoutes>
+          } />
         </Routes>
       </App>
     </HashRouter>

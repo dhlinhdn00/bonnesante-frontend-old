@@ -2,10 +2,13 @@ import React from 'react';
 import ZoomMtgEmbedded from '@zoom/meetingsdk/embedded';
 import style from './Meeting.module.css';
 import FaceDetectionComponent from '../FaceDetection';
+
 function Meeting() {
   const [stateMeeting, setStateMeeting] = React.useState(false);
   const [stateMeasure, setStateMeasure] = React.useState(false);
   const [stateConnect, setStateConnect] = React.useState(false);
+
+  const userData = JSON.parse(localStorage.getItem('user'))
   const client = ZoomMtgEmbedded.createClient();
 
   var authEndpoint = 'http://localhost:4000'
@@ -79,7 +82,7 @@ function Meeting() {
             <button onClick={getSignature}>{stateConnect ? "Connecting ..." : "Join Meeting"}</button>
           </div>
         )}
-        {stateMeasure ? (
+        {!userData.isStaff && stateMeasure ? (
           <div className={style.meetingSDKElement}>
             <FaceDetectionComponent />
           </div>
