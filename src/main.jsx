@@ -16,6 +16,7 @@ import InferenceGraph from './pages/Result/Chart.jsx'
 import Chart from './pages/Result/Chart.jsx'
 import ResultPage from './pages/Result/ResultPage.jsx'
 import { PieChart } from './pages/Result/PieChart.jsx'
+import VideoCallPage from './pages/Patient/VideoCallPage.jsx'
 
 const rootElement = document.getElementById('root')
 if (rootElement) {
@@ -33,6 +34,7 @@ if (rootElement) {
           <Route path='/result' element={<ResultPage/>} />
           <Route path='/chart' element={<PieChart/>} />
           <Route path='/home' element={<Home />} />
+          <Route path='/patient/video-call' element={<VideoCallPage />} />
         </Routes>
       </App>
     </HashRouter>
