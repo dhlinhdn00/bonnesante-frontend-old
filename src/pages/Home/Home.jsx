@@ -13,12 +13,14 @@ export default function Home() {
       <div className={style.header}>
         <HeaderBar />
       </div>
-      <Link className={style.start_measure} to="/add-data">
+
+      {!userData.isStaff ? <Link className={style.start_measure} to="/add-data">
         <div className={style.text_overlay}>
           Start <br /> Measuring
         </div>
-      </Link>
-      <h1>Measure</h1>
+        <h1>Measure</h1>
+      </Link> : <div></div>}
+
       <div className={style.card_options}>
         {!userData.isStaff ? <Link className={style.card} to="/videoCall">
           <img src={doctorIcon} alt="doctor icon" />
