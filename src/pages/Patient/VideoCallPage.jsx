@@ -1,24 +1,40 @@
-import React, { Suspense, lazy } from 'react'
+import React, { useState } from 'react'
 import style from './VideoCallPage.module.css'
 import HeaderBar from '../../components/HeaderBar/HeaderBar'
-import Loading from '../../lazy/Loading'
 import FindingDoctor from '../../lazy/FindingDoctor'
+import Meeting from '../../components/VideoCall/Meeting'
+import { getDatabase, ref, set, onValue } from 'firebase/database'
+
 const VideoCallPage = () => {
-  function delayForMeeting(promise) {
-    return new Promise(resolve => {
-      setTimeout(resolve, 5000);
-    }).then(() => promise);
-  };
-  const Meeting = lazy(() => delayForMeeting(import('../../components/VideoCall/Meeting')));
+  const [isAccepted, setIsAccepted] = useState(false);
+
+  const database = getDatabase();
+  const requestId = 1;
+  function setRequest() {
+    set(ref(database, 'request/' + requestId), {
+      status: !isAccepted,
+    });
+  }
+
+  const requestRef = ref(database, 'request/' + requestId);
+
+  onValue(requestRef, (snapshot) => {
+    const requestInfo = snapshot.val();
+    if (requestInfo.status !== isAccepted) {
+      setIsAccepted(requestInfo.status);
+    }
+  });
+
 
   return (
     <div className={style.page}>
       <div className={style.container}>
         <HeaderBar />
+        <button onClick={setRequest}>Set request</button>
         <div className={style.content}>
-            <Suspense fallback={<FindingDoctor />}>
-              <Meeting />
-            </Suspense>
+          {
+            isAccepted ? <Meeting /> : <FindingDoctor />
+          }
         </div>
       </div>
     </div>
