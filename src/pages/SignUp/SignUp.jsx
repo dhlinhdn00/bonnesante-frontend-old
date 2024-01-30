@@ -20,14 +20,12 @@ const SignUp = () => {
     let error = {}
 
     fields.forEach((field) => {
-      if (!field.isValidField) {
+      if (!field.isValid) {
         isValid = false
         error[field.field] = field.message
       }
     })
     setError(error)
-
-    console.log("end", isValid)
 
     return isValid
   }
@@ -35,13 +33,9 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log("submit")
     const fieldCheck = ValidationRegister(data)
 
-    console.log(fieldCheck)
-
     if (isValidation(fieldCheck)) {
-      console.log("thuc hien dk")
       setError('')
       const formdata = new FormData()
       formdata.append('username', data.username)
@@ -50,7 +44,7 @@ const SignUp = () => {
       formdata.append('last_name', data.last_name)
       formdata.append('email', data.email)
 
-      API.post('register/', formdata)
+      API.post('register', formdata)
         .then((res) => {
           res.status === 200 && navigate('/login')
           console.log(res)
