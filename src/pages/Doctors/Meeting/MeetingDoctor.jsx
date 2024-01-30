@@ -3,6 +3,7 @@ import style from './MeetingDoctor.module.css'
 import HeaderBar from '../../../components/HeaderBar/HeaderBar'
 
 import Meeting from '../../../components/Meeting/JoinMeetingUser'
+import JoinMeetingDoctor from '../../../components/Meeting/JoinMeetingDoctor'
 
 const MeetingDoctor = () => {
 
@@ -11,7 +12,8 @@ const MeetingDoctor = () => {
             <div className={style.container}>
                 <HeaderBar />
                 <div className={style.content}>
-                    <Meeting />
+                    {/* <Meeting /> */}
+                    <JoinMeetingDoctor />
                 </div>
             </div>
         </div>
