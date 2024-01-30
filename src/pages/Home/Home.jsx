@@ -22,7 +22,7 @@ export default function Home() {
       </Link> : <div></div>}
 
       <div className={style.card_options}>
-        {!userData.isStaff ? <Link className={style.card} to="/videoCall">
+        {!userData.isStaff ? <Link className={style.card} to="patient/meeting">
           <img src={doctorIcon} alt="doctor icon" />
           <p>Make a VideoCall</p>
           <ion-icon name="chevron-forward-outline"></ion-icon>

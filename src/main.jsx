@@ -16,11 +16,11 @@ import InferenceGraph from './pages/Result/Chart.jsx'
 import Chart from './pages/Result/Chart.jsx'
 import ResultPage from './pages/Result/ResultPage.jsx'
 import { PieChart } from './pages/Result/PieChart.jsx'
-import VideoCallPage from './pages/Patient/VideoCallPage.jsx'
 import ProtectedRoutes from './utils/ProtectedRoutes.jsx'
 import CheckScheduled from './pages/Doctors/CheckScheduled/CheckScheduled.jsx'
-import VideoCall from './pages/Doctors/VideoCall/VideoCall.jsx'
 import CheckUser from './utils/CheckUser.jsx'
+import MeetingDoctor from './pages/Doctors/Meeting/MeetingDoctor.jsx'
+import MeetingUser from './pages/Patient/MeetingUser.jsx'
 
 const rootElement = document.getElementById('root')
 if (rootElement) {
@@ -61,14 +61,14 @@ if (rootElement) {
               <Home />
             </ProtectedRoutes>} />
 
-          <Route path='/videoCall' element={
+          <Route path='patient/meeting' element={
             <ProtectedRoutes>
-              <CheckUser user={<VideoCallPage />} doctor={<><h1>You are doctor</h1></>} />
+              <CheckUser user={<MeetingUser />} doctor={<><h1>You are doctor</h1></>} />
             </ProtectedRoutes>} />
 
-          <Route path='/doctor/videoCall' element={
+          <Route path='/doctor/meeting' element={
             <ProtectedRoutes>
-              <CheckUser user={<><h1>You are patient</h1></>} doctor={<VideoCall />} />
+              <CheckUser user={<><h1>You are patient</h1></>} doctor={<MeetingDoctor />} />
             </ProtectedRoutes>} />
 
           <Route path='/checkScheduled' element={
