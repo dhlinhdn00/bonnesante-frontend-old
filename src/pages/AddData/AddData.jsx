@@ -6,6 +6,7 @@ import doctorIcon from '../../assets/images/addData.png'
 
 const AddData = () => {
   let navigater = useNavigate()
+
   return (
     <div className={style.page}>
       <div className={style.container}>

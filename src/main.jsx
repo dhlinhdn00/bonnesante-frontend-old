@@ -16,9 +16,11 @@ import InferenceGraph from './pages/Result/Chart.jsx'
 import Chart from './pages/Result/Chart.jsx'
 import ResultPage from './pages/Result/ResultPage.jsx'
 import { PieChart } from './pages/Result/PieChart.jsx'
-import VideoCallPage from './pages/Patient/VideoCallPage.jsx'
 import ProtectedRoutes from './utils/ProtectedRoutes.jsx'
 import CheckScheduled from './pages/Doctors/CheckScheduled/CheckScheduled.jsx'
+import CheckUser from './utils/CheckUser.jsx'
+import MeetingDoctor from './pages/Doctors/Meeting/MeetingDoctor.jsx'
+import MeetingUser from './pages/Patient/MeetingUser.jsx'
 
 const rootElement = document.getElementById('root')
 if (rootElement) {
@@ -32,17 +34,17 @@ if (rootElement) {
           <Route path='/signup' element={<SignUp />} />
           <Route path='/add-data' element={
             <ProtectedRoutes>
-              <AddData />
+              <CheckUser user={<AddData />} doctor={<><h1>You are doctor</h1></>} />
             </ProtectedRoutes>
           } />
           <Route path='/load-result' element={
             <ProtectedRoutes>
-              <LoadResult />
+              <CheckUser user={<LoadResult />} doctor={<><h1>You are doctor</h1></>} />
             </ProtectedRoutes>
           } />
           <Route path='/history' element={
             <ProtectedRoutes>
-              <ListResult />
+              <CheckUser user={<ListResult />} doctor={<><h1>You are doctor</h1></>} />
             </ProtectedRoutes>
           } />
           <Route path='/result' element={
@@ -59,13 +61,19 @@ if (rootElement) {
               <Home />
             </ProtectedRoutes>} />
 
-          <Route path='/videoCall' element={
+          <Route path='patient/meeting' element={
             <ProtectedRoutes>
-              <VideoCallPage />
+              <CheckUser user={<MeetingUser />} doctor={<><h1>You are doctor</h1></>} />
             </ProtectedRoutes>} />
+
+          <Route path='/doctor/meeting' element={
+            <ProtectedRoutes>
+              <CheckUser user={<><h1>You are patient</h1></>} doctor={<MeetingDoctor />} />
+            </ProtectedRoutes>} />
+
           <Route path='/checkScheduled' element={
             <ProtectedRoutes>
-              <CheckScheduled />
+              <CheckUser user={<><h1>You are patient</h1></>} doctor={<CheckScheduled />} />
             </ProtectedRoutes>
           } />
         </Routes>

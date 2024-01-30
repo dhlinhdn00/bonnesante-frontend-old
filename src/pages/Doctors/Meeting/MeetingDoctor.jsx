@@ -1,10 +1,10 @@
 import React from 'react'
-import style from './VideoCallPage.module.css'
-import HeaderBar from '../../components/HeaderBar/HeaderBar'
-import FindingDoctor from '../../lazy/FindingDoctor'
-import Meeting from '../../components/VideoCall/Meeting'
+import style from './MeetingDoctor.module.css'
+import HeaderBar from '../../../components/HeaderBar/HeaderBar'
 
-const VideoCall = () => {
+import Meeting from '../../../components/Meeting/Meeting'
+
+const MeetingDoctor = () => {
 
     return (
         <div className={style.page}>
@@ -17,4 +17,4 @@ const VideoCall = () => {
         </div>
     )
 }
-export default VideoCall;
+export default MeetingDoctor;
