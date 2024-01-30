@@ -9,7 +9,7 @@ import { PATH_URL } from "../constants/values"
 import useResultsContext from '../hooks/useResultsContext'
 
 const FaceDetectionComponent = props => {
-  const {user, saveUser} = useUserContext()
+  const { user, saveUser } = useUserContext()
   let cancelStateProp = props.cancelState;
   const [cancelState, setCancelState] = useState(cancelStateProp);
   const [errorState, setErrorState] = useState(false)
@@ -55,7 +55,7 @@ const FaceDetectionComponent = props => {
         videoRef.current.onstop = () => {
           console.log('STOP!!!')
         }
-        
+
         videoRef.current.onstart = (event) => {
           console.log('START!!!')
         }
@@ -72,33 +72,33 @@ const FaceDetectionComponent = props => {
   }, [recordedChunks]);
 
   useEffect(() => {
-    if(isFinish) {
-      console.log('send',recordedChunks)
+    if (isFinish) {
+      console.log('send', recordedChunks)
 
-    const blob = new Blob(recordedChunks, { type: 'video/webm' })
-    const formData = new FormData()
+      const blob = new Blob(recordedChunks, { type: 'video/webm' })
+      const formData = new FormData()
 
-    console.log('blob', blob)
+      console.log('blob', blob)
 
-    formData.append('user_id', user ? user.id : 1)
-    formData.append('video_file', blob)
+      formData.append('user_id', user ? user.id : 1)
+      formData.append('video_file', blob)
 
-    console.log("Sent to Server!!!", formData)
+      console.log("Sent to Server!!!", formData)
 
-    setCancelState(true);
-    axios
-      .post(PATH_URL + 'model/', formData)
-      .then(response => {
-        if (response.data) {
-          console.log('response', response.data)
-          localStorage.setItem('result', JSON.stringify(response.data))
-          setResult(response.data)
-          navigater('/result')
-        }
-      })
-      .catch(error => {
-        console.error(error)
-      })
+      setCancelState(true);
+      axios
+        .post(PATH_URL + 'model/', formData)
+        .then(response => {
+          if (response.data) {
+            console.log('response', response.data)
+            localStorage.setItem('result', JSON.stringify(response.data))
+            setResult(response.data)
+            navigater('/result')
+          }
+        })
+        .catch(error => {
+          console.error(error)
+        })
 
     }
   }, [isFinish])
@@ -114,8 +114,8 @@ const FaceDetectionComponent = props => {
         // after file change
         // videoRef.current && videoRef.current.start(33);
         timeoutRef.current = setTimeout(async () => {
-        videoRef.current.stop();
-        setIsFinish(true)
+          videoRef.current.stop();
+          setIsFinish(true)
         }, 32000);
       }, 2000)
       // Set the timeout and store the ID in the ref
@@ -203,17 +203,18 @@ const FaceDetectionComponent = props => {
 
   }, [])
 
- 
+
 
   return (
     <>
       <VideoCamera errorState={errorState} videoRef={detectionRef} />
       {errorState ? (
         <p style={{ textAlign: 'center' }}> Please keep your face still in the camera</p>
-      ) : ( !isFinish ? 
+      ) : (!isFinish ?
         <ProgressBar
           completed={100}
           maxCompleted={100}
+          width='100%'
           height='25px'
           bgColor='#e71e50'
           isLabelVisible={false}

@@ -7,6 +7,10 @@ function MeetingUser() {
 
   const [stateMeasure, setStateMeasure] = React.useState(false);
 
+  const getMeasure = () => {
+    setStateMeasure(true);
+  }
+
   return (
     <div>
       <main>
@@ -17,7 +21,7 @@ function MeetingUser() {
           </div>
         ) : (
           <div>
-            {/* <button onClick={getMeasure}>Measure</button> */}
+            <button onClick={getMeasure}>Measure</button>
           </div>
         )}
       </main>
