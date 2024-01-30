@@ -9,7 +9,7 @@ import { PATH_URL } from "../constants/values"
 import useResultsContext from '../hooks/useResultsContext'
 
 const FaceDetectionComponent = props => {
-  const user = useUserContext()
+  const {user, saveUser} = useUserContext()
   let cancelStateProp = props.cancelState;
   const [cancelState, setCancelState] = useState(cancelStateProp);
   const [errorState, setErrorState] = useState(false)

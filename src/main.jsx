@@ -19,6 +19,8 @@ import CheckScheduled from './pages/Doctors/CheckScheduled/CheckScheduled.jsx'
 import CheckUser from './utils/CheckUser.jsx'
 import MeetingDoctor from './pages/Doctors/Meeting/MeetingDoctor.jsx'
 import MeetingUser from './pages/Patient/MeetingUser.jsx'
+import UserContextProvider from './contexts/userContext'
+import ResultsContextProvider, { ResultsContext } from './contexts/resultsContext'
 
 const rootElement = document.getElementById('root')
 if (rootElement) {

@@ -2,7 +2,7 @@ import React from 'react'
 import style from './MeetingDoctor.module.css'
 import HeaderBar from '../../../components/HeaderBar/HeaderBar'
 
-import Meeting from '../../../components/Meeting/Meeting'
+import Meeting from '../../../components/Meeting/JoinMeetingUser'
 
 const MeetingDoctor = () => {
 

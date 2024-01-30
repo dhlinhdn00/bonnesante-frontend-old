@@ -1,10 +1,11 @@
 import React from 'react'
 import { Navigate, useLocation } from "react-router-dom"
+import useUserContext from '../hooks/useUserContext'
 
 const ProtectedRoutes = ({ children }) => {
-    const userData = JSON.parse(localStorage.getItem('user'))
-
-    if (!userData.isAuthenticated) {
+    const { user, saveUser } = useUserContext();
+    console.log('user', user)
+    if (!user) {
         return <Navigate to="/login" />
     }
 

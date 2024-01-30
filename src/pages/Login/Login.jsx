@@ -14,7 +14,7 @@ const Login = () => {
 
   let navigate = useNavigate();
 
-  const user = useUserContext();
+  const { user, saveUser } = useUserContext();
 
   useEffect(() => {
     user && navigate('/home')
@@ -61,11 +61,7 @@ const Login = () => {
             console.log(res.data)
             const data = { ...data_json, id: res.data.user_info.id, isAuthenticated: true, isStaff: res.data.user_info.is_staff }
 
-            localStorage.setItem('user', JSON.stringify(data))
-
-            console.log("save")
-            console.log(data)
-
+            saveUser(data);
           } else {
             console.log('!200')
             setError({ login: res.data.message })

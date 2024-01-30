@@ -6,10 +6,10 @@ import LogoBK from "../../assets/images/LogoDHBK.jpg";
 import LogoFast from "../../assets/images/FAST.png";
 
 const HeaderBar = () => {
-    const user = useUserContext();
+    const { user, saveUser } = useUserContext();
     const username = user ? user.username : null;
     function logout() {
-        localStorage.removeItem('user');
+        saveUser(null);
     }
     return (
         <div className={style.header}>
