@@ -2,27 +2,23 @@ import React, { useState } from 'react'
 import style from './MeetingUser.module.css'
 import HeaderBar from '../../components/HeaderBar/HeaderBar'
 import FindingDoctor from '../../lazy/FindingDoctor'
-import Meeting from '../../components/Meeting/Meeting'
-import { getDatabase, ref, set, onValue } from 'firebase/database'
+import Meeting from '../../components/Meeting/JoinMeetingUser'
+import { ref, set, onValue, child } from 'firebase/database'
+import { database } from '../../services/firebase/config'
+import useUserContext from '../../hooks/useUserContext'
 
 const MeetingUser = () => {
   const [isAccepted, setIsAccepted] = useState(false);
+  const { user, saveUser } = useUserContext();
+  const dbRef = ref(database);
 
-  const database = getDatabase();
-  const requestId = 1;
+  console.log(user.id)
 
-  function setRequest() {
-    set(ref(database, 'request/' + requestId), {
-      status: !isAccepted,
-    });
-  }
-
-  const requestRef = ref(database, 'request/' + requestId);
-
-  onValue(requestRef, (snapshot) => {
+  onValue((child(dbRef, `videoCall/${user.id}`)), (snapshot) => {
     const requestInfo = snapshot.val();
-    if (requestInfo.status !== isAccepted) {
-      setIsAccepted(requestInfo.status);
+    console.log(requestInfo)
+    if (requestInfo.isAccepted !== isAccepted) {
+      setIsAccepted(requestInfo.isAccepted);
     }
   });
 
@@ -31,7 +27,6 @@ const MeetingUser = () => {
     <div className={style.page}>
       <div className={style.container}>
         <HeaderBar />
-        <button onClick={setRequest}>Set request</button>
         <div className={style.content}>
           {
             isAccepted ? <Meeting /> : <FindingDoctor />
