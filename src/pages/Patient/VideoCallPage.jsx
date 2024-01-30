@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import style from './VideoCallPage.module.css'
 import HeaderBar from '../../components/HeaderBar/HeaderBar'
 import FindingDoctor from '../../lazy/FindingDoctor'
-import Meeting from '../../components/VideoCall/Meeting'
+import Meeting from '../../components/Meeting/Meeting'
 import { getDatabase, ref, set, onValue } from 'firebase/database'
 
 const VideoCallPage = () => {
@@ -10,6 +10,7 @@ const VideoCallPage = () => {
 
   const database = getDatabase();
   const requestId = 1;
+
   function setRequest() {
     set(ref(database, 'request/' + requestId), {
       status: !isAccepted,

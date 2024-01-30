@@ -17,8 +17,8 @@ export default function CheckScheduled() {
 
                 <ul>
                     <li className={style.schedule}>Monday 29 January
-                        <Link to="/videoCall">
-                            <img src={check} alt="logoFast" className={style.check} />
+                        <Link to="/doctor/videoCall">
+                            <img src={check} alt="check" className={style.check} />
                         </Link>
                     </li>
                 </ul>

@@ -2,7 +2,7 @@
 import React from 'react'
 import UserContextProvider from './contexts/userContext'
 import ResultsContextProvider, { ResultsContext } from './contexts/resultsContext'
-import { firebaseConfig } from './components/firebase/config'
+import { firebaseConfig } from './services/firebase/config'
 
 
 const App = ({ children }) => {
