@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  margin: 0 auto;
+  width: 85%;
+  max-width: 1000px;
+}
+
+.title {
+  font-size: 30px;
+  text-align: center;
+  font-weight: 1000;
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.schedule {
+  margin-bottom: 1rem;
+  height: 2rem;
+  background-color: #e2e6ee;
+  border-radius: 1rem;
+  border: 1px solid #e2e6eeb7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+.check {
+  color: #70e000;
+}

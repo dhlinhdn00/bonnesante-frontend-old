@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useContext, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import style from './Login.module.css'
 import API from '../../constants/api/API'
 import { Link, useNavigate } from 'react-router-dom'
@@ -9,10 +9,11 @@ import { PATH_URL } from '../../constants/values'
 import useUserContext from '../../hooks/useUserContext'
 
 const Login = () => {
-  const [data, setData] = React.useState({ username: '', password: '' })
+  const [data, setData] = React.useState({ username: '', password: '', isAuthenticated: false, isStaff: false })
   const [error, setError] = React.useState({ username: '', password: '', login: '' })
 
   let navigate = useNavigate();
+
   const user = useUserContext();
 
   useEffect(() => {
@@ -51,19 +52,20 @@ const Login = () => {
         password: data.password
       }
 
-      axios.post(PATH_URL+'login/', data_json)
+      axios.post(PATH_URL + 'login/', data_json)
         .then(res => {
           if (res.status === 200) {
-    
+
             navigate('/home')
 
-            const data = {...data_json,id:res.data.user_info.id}
+            console.log(res.data)
+            const data = { ...data_json, id: res.data.user_info.id, isAuthenticated: true, isStaff: res.data.user_info.is_staff }
 
             localStorage.setItem('user', JSON.stringify(data))
 
             console.log("save")
             console.log(data)
-            
+
           } else {
             console.log('!200')
             setError({ login: res.data.message })
@@ -71,7 +73,7 @@ const Login = () => {
           console.log(res)
         })
         .catch(err => {
-          console.log("err",err)
+          console.log("err", err)
         })
     }
   }
