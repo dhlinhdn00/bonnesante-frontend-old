@@ -32,9 +32,10 @@ function Meeting({ role = 0, meetingNumber = '82216238185', passWord = 'NUzrk7' 
 
     const location = useLocation()
 
-    const { userID } = location.state
+
 
     const handleConfirm = async () => {
+        const { userID } = location.state
 
         console.log(userConfirmed)
 
@@ -78,9 +79,9 @@ function Meeting({ role = 0, meetingNumber = '82216238185', passWord = 'NUzrk7' 
 
         var client
         try {
+            client = ZoomMtgEmbedded.destroyClient();
             client = ZoomMtgEmbedded.createClient();
         } catch (e) {
-            client = ZoomMtgEmbedded.destroyClientAll();
             client = ZoomMtgEmbedded.createClient();
         }
 
