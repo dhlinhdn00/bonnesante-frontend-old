@@ -1,6 +1,12 @@
+import style from './Meeting.module.css';
+
 import React from 'react';
 import ZoomMtgEmbedded from '@zoom/meetingsdk/embedded';
-import style from './Meeting.module.css';
+
+import { ref, child, get, update, onValue } from "firebase/database";
+import { database } from "../../../services/firebase/config";
+
+
 import { ZOOM_SIGN_URL } from '../../constants/values';
 
 
@@ -21,6 +27,31 @@ function Meeting({ role = 0, meetingNumber = '82216238185', passWord = 'NUzrk7' 
     var registrantToken = ''
     var zakToken = ''
     var leaveUrl = 'http://localhost:3000'
+
+    const location = useLocation()
+
+    const { userID } = location.state
+
+    const handleConfirm = async () => {
+
+        console.log(userConfirmed)
+
+        const updates = {
+            [`videoCall/${userID}/isAccepted`]: true
+        };
+
+        console.log(updates)
+        // Get a reference to the database
+        const dbRef = ref(database);
+
+        // Update the specified location with the updates object
+        try {
+            await update(dbRef, updates);
+            console.log(`User with ID ${userConfirmed.userID} has been confirmed.`);
+        } catch (error) {
+            console.error('Error updating user confirmation:', error);
+        }
+    }
 
     function getSignature(e) {
         e.preventDefault();
@@ -65,6 +96,10 @@ function Meeting({ role = 0, meetingNumber = '82216238185', passWord = 'NUzrk7' 
                 zak: zakToken
             }).then(() => {
                 setStateMeeting(true);
+
+                if (role === 1) {
+                    handleConfirm();
+                }
                 console.log('joined successfully')
             }).catch((error) => {
                 console.log(error)

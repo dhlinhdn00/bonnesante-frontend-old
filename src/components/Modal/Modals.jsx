@@ -40,3 +40,5 @@ function Modals({ data }) {
 }
 
 export default Modals;
+
+
