@@ -10,7 +10,8 @@ import DataResult from './DataResult'
 
 const History = () => {
   let navigate = useNavigate();
-  function renderData(){};
+  function renderData() { };
+
   return (
     <div className={style.page}>
       <div className={style.container}>

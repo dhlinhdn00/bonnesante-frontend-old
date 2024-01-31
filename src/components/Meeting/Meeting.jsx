@@ -74,7 +74,7 @@ function Meeting({ role = 0, meetingNumber = '82216238185', passWord = 'NUzrk7' 
             </div>
 
             <div>
-                {stateConnect ? "" : <button onClick={getSignature}>Join Meeting</button>}
+                {stateConnect ? "" : <button onClick={getSignature}>{stateConnect ? "Connecting ..." : "Join Meeting"}</button>}
             </div>
         </div>
     );

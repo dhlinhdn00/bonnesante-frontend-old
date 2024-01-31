@@ -1,0 +1,14 @@
+.icon {
+  min-width: 50px;
+  min-height: 50px;
+
+  position: absolute;
+  top: 0%;
+  right: 0%;
+
+  opacity: 0.5;
+}
+
+.icon:hover {
+  opacity: 1;
+}

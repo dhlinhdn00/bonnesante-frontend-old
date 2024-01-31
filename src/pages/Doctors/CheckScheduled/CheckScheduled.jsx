@@ -28,7 +28,7 @@ export default function CheckScheduled() {
     });
 
 
-    const handleConfirm = (values) => {
+    const handleConfirm = async (values) => {
         const userConfirmed = schedules.find((value) => value.userID === values.userID)
 
         console.log(userConfirmed)
@@ -42,13 +42,12 @@ export default function CheckScheduled() {
         const dbRef = ref(database);
 
         // Update the specified location with the updates object
-        return update(dbRef, updates)
-            .then(() => {
-                console.log(`User with ID ${userConfirmed.userID} has been confirmed.`);
-            })
-            .catch((error) => {
-                console.error('Error updating user confirmation:', error);
-            });
+        try {
+            await update(dbRef, updates);
+            console.log(`User with ID ${userConfirmed.userID} has been confirmed.`);
+        } catch (error) {
+            console.error('Error updating user confirmation:', error);
+        }
     }
 
     return (
@@ -62,7 +61,7 @@ export default function CheckScheduled() {
                 <ul>
                     {schedules?.map((value, index) => {
                         return (<li key={index} className={style.schedule}>Monday 29 January {value.username}
-                            <Link to="/doctor/meeting">
+                            <Link to="/doctor/meeting" state={{ userID: value.userID }}>
                                 <img src={check} alt="check" className={style.check} onClick={() => handleConfirm(value)} />
                             </Link>
                         </li>)
