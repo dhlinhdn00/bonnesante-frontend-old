@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 import ZoomMtgEmbedded from '@zoom/meetingsdk/embedded';
 
 import { ref, child, get, update, onValue } from "firebase/database";
-import { database } from "../../../services/firebase/config";
+import { database } from "../../services/firebase/config";
 
 
 import { ZOOM_SIGN_URL } from '../../constants/values';
@@ -32,9 +32,10 @@ function Meeting({ role = 0, meetingNumber = '82216238185', passWord = 'NUzrk7' 
 
     const location = useLocation()
 
-    const { userID } = location.state
+
 
     const handleConfirm = async () => {
+        const { userID } = location.state
 
         console.log(userConfirmed)
 
@@ -78,9 +79,9 @@ function Meeting({ role = 0, meetingNumber = '82216238185', passWord = 'NUzrk7' 
 
         var client
         try {
+            client = ZoomMtgEmbedded.destroyClient();
             client = ZoomMtgEmbedded.createClient();
         } catch (e) {
-            client = ZoomMtgEmbedded.destroyClient();
             client = ZoomMtgEmbedded.createClient();
         }
 
