@@ -6,9 +6,10 @@ import ProgressBar from '@ramonak/react-progress-bar'
 import Chart from './Chart'
 import { PieChart } from './PieChart'
 
-const DataResult = (data) => {
+const DataResult = ({ data }) => {
   const { results } = data;
-  console.log("results",results);
+  console.log("results", results);
+
   return (
     <div className={style.data_container}>
       <h2>20 / 11 / 2023</h2>
