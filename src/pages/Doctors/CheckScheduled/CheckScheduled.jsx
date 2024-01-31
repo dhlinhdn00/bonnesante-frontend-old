@@ -28,27 +28,27 @@ export default function CheckScheduled() {
     });
 
 
-    const handleConfirm = async (values) => {
-        const userConfirmed = schedules.find((value) => value.userID === values.userID)
+    // const handleConfirm = async (values) => {
+    //     const userConfirmed = schedules.find((value) => value.userID === values.userID)
 
-        console.log(userConfirmed)
+    //     console.log(userConfirmed)
 
-        const updates = {
-            [`videoCall/${userConfirmed.userID}/isAccepted`]: true
-        };
+    //     const updates = {
+    //         [`videoCall/${userConfirmed.userID}/isAccepted`]: true
+    //     };
 
-        console.log(updates)
-        // Get a reference to the database
-        const dbRef = ref(database);
+    //     console.log(updates)
+    //     // Get a reference to the database
+    //     const dbRef = ref(database);
 
-        // Update the specified location with the updates object
-        try {
-            await update(dbRef, updates);
-            console.log(`User with ID ${userConfirmed.userID} has been confirmed.`);
-        } catch (error) {
-            console.error('Error updating user confirmation:', error);
-        }
-    }
+    //     // Update the specified location with the updates object
+    //     try {
+    //         await update(dbRef, updates);
+    //         console.log(`User with ID ${userConfirmed.userID} has been confirmed.`);
+    //     } catch (error) {
+    //         console.error('Error updating user confirmation:', error);
+    //     }
+    // }
 
     return (
         <>
@@ -62,7 +62,8 @@ export default function CheckScheduled() {
                     {schedules?.map((value, index) => {
                         return (<li key={index} className={style.schedule}>Monday 29 January {value.username}
                             <Link to="/doctor/meeting" state={{ userID: value.userID }}>
-                                <img src={check} alt="check" className={style.check} onClick={() => handleConfirm(value)} />
+                                {/* <img src={check} alt="check" className={style.check} onClick={() => handleConfirm(value)} /> */}
+                                <img src={check} alt="check" className={style.check} />
                             </Link>
                         </li>)
                     })}
