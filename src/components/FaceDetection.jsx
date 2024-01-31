@@ -7,6 +7,8 @@ import VideoCamera from './VideoCamera/VideoCamera'
 import { useNavigate } from 'react-router-dom'
 import { PATH_URL } from "../constants/values"
 import useResultsContext from '../hooks/useResultsContext'
+import { database } from '../services/firebase/config'
+import { ref, set, child } from 'firebase/database'
 
 const FaceDetectionComponent = props => {
   const { user, saveUser } = useUserContext()
@@ -20,6 +22,8 @@ const FaceDetectionComponent = props => {
   const timeoutRef = useRef();
   const timeoutRef1 = useRef();
   const [isFinish, setIsFinish] = useState(false)
+
+  const dbRef = ref(database);
 
   const MODEL_URL = '/models'
 
@@ -93,7 +97,17 @@ const FaceDetectionComponent = props => {
             console.log('response', response.data)
             localStorage.setItem('result', JSON.stringify(response.data))
             setResult(response.data)
-            navigater('/result')
+
+            set(child(dbRef, `result/` + user.id), {
+              userId: user.id,
+              result: response.data,
+            })
+              .then(() => {
+                console.log('save result success')
+              })
+              .catch((error) => {
+                console.log(error)
+              })
           }
         })
         .catch(error => {
