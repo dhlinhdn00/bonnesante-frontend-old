@@ -9,19 +9,24 @@ import { PATH_URL } from "../constants/values"
 import useResultsContext from '../hooks/useResultsContext'
 import { database } from '../services/firebase/config'
 import { ref, set, child } from 'firebase/database'
+import ToastResult from './Meeting/ToastResult'
 
 const FaceDetectionComponent = props => {
   const { user, saveUser } = useUserContext()
   let cancelStateProp = props.cancelState;
   const [cancelState, setCancelState] = useState(cancelStateProp);
-  const [errorState, setErrorState] = useState(false)
+  const [errorState, setErrorState] = useState(false);
+  const [isFinish, setIsFinish] = useState(false)
+  const [showToast, setShowToast] = useState(false)
+
   const { setResult } = useResultsContext();
+
   const intervalRef = useRef(null)
   const videoRef = useRef(null)
   const detectionRef = useRef(null)
   const timeoutRef = useRef();
   const timeoutRef1 = useRef();
-  const [isFinish, setIsFinish] = useState(false)
+
 
   const dbRef = ref(database);
 
@@ -97,6 +102,9 @@ const FaceDetectionComponent = props => {
             console.log('response', response.data)
             localStorage.setItem('result', JSON.stringify(response.data))
             setResult(response.data)
+
+            // toast
+            setShowToast(true)
 
             set(child(dbRef, `result/` + user.id), {
               userId: user.id,
@@ -221,6 +229,7 @@ const FaceDetectionComponent = props => {
 
   return (
     <>
+      <ToastResult isSuccess={result} show={showToast} setShow={setShowToast} />
       <VideoCamera errorState={errorState} videoRef={detectionRef} />
       {errorState ? (
         <p style={{ textAlign: 'center' }}> Please keep your face still in the camera</p>
