@@ -1,6 +1,8 @@
 import style from './Meeting.module.css';
 
 import React from 'react';
+import { useLocation } from 'react-router-dom';
+
 import ZoomMtgEmbedded from '@zoom/meetingsdk/embedded';
 
 import { ref, child, get, update, onValue } from "firebase/database";
