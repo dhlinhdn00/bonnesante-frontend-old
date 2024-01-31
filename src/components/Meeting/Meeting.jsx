@@ -9,7 +9,7 @@ function Meeting({ role = 0, meetingNumber = '82216238185', passWord = 'NUzrk7' 
 
     const [stateConnect, setStateConnect] = React.useState(false);
 
-    const client = ZoomMtgEmbedded.createClient();
+
 
     var authEndpoint = ZOOM_SIGN_URL
     var sdkKey = 'LPqZQdOeTCWdA5fspfFWmg'
@@ -42,6 +42,14 @@ function Meeting({ role = 0, meetingNumber = '82216238185', passWord = 'NUzrk7' 
     }
 
     function startMeeting(signature) {
+
+        var client
+        try {
+            client = ZoomMtgEmbedded.createClient();
+        } catch (e) {
+            client = ZoomMtgEmbedded.destroyClient();
+            client = ZoomMtgEmbedded.createClient();
+        }
 
         let meetingSDKElement = document.getElementById('meetingSDKElement');
 
