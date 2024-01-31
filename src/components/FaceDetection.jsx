@@ -10,6 +10,7 @@ import useResultsContext from '../hooks/useResultsContext'
 import { database } from '../services/firebase/config'
 import { ref, set, child } from 'firebase/database'
 import ToastResult from './Meeting/ToastResult'
+import uuid from 'react-uuid'
 
 const FaceDetectionComponent = props => {
   const { user, saveUser } = useUserContext()
@@ -19,7 +20,7 @@ const FaceDetectionComponent = props => {
   const [isFinish, setIsFinish] = useState(false)
   const [showToast, setShowToast] = useState(false)
 
-  const { setResult } = useResultsContext();
+  const { result, setResult } = useResultsContext();
 
   const intervalRef = useRef(null)
   const videoRef = useRef(null)
@@ -101,17 +102,24 @@ const FaceDetectionComponent = props => {
           if (response.data) {
             console.log('response', response.data)
             localStorage.setItem('result', JSON.stringify(response.data))
-            setResult(response.data)
+
 
             // toast
             setShowToast(true)
 
+            const dataResult = {
+              ...response.data,
+              resultId: uuid(),
+            }
+            setResult(dataResult)
+
             set(child(dbRef, `result/` + user.id), {
               userId: user.id,
-              result: response.data,
+              result: dataResult,
             })
               .then(() => {
                 console.log('save result success')
+                props.setShow(false)
               })
               .catch((error) => {
                 console.log(error)

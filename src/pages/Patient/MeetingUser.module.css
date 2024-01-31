@@ -10,26 +10,29 @@
     font-family: Nunito Sans;
 }
 
-.container {
+.containerMeetingUser {
     margin: 0 auto;
     width: 85%;
     max-width: 1000px;
 }
 
-.content {
+.contentMeetingUser {
     width: 100%;
     height: 100%;
     margin: 20px auto;
+    padding-top: 40px;
     display: grid;
+
+    position: relative;
 }
 
-.content img {
+/* .content img {
     width: 100%;
     min-width: 85%;
     min-height: 400px;
     object-fit: cover;
     justify-self: center;
-}
+} */
 
 .content h3 {
     font-size: 20px;

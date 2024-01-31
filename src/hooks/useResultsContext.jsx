@@ -2,9 +2,9 @@ import { useContext } from 'react'
 import { ResultsContext } from '../contexts/resultsContext'
 
 const useResultsContext = () => {
-  const results = useContext(ResultsContext)
+  const {result, setResult} = useContext(ResultsContext)
 
-  return results
+  return {result, setResult}
 }
 
 export default useResultsContext

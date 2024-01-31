@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 
 import style from "./ModalDoctor.module.css"
 
-import showIcon from "../../assets/icons/show.svg"
+import showIcon from "../../assets/images/red-heart.gif"
 import DataResult from '../../pages/Result/DataResult';
 
 import { ref, child, onValue } from "firebase/database";
