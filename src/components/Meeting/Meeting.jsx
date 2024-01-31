@@ -94,11 +94,11 @@ function Meeting({ role = 0, meetingNumber = '82216238185', passWord = 'NUzrk7' 
                 userEmail: userEmail,
                 tk: registrantToken,
                 zak: zakToken
-            }).then(() => {
+            }).then(async () => {
                 setStateMeeting(true);
 
                 if (role === 1) {
-                    handleConfirm();
+                    await handleConfirm();
                 }
                 console.log('joined successfully')
             }).catch((error) => {
