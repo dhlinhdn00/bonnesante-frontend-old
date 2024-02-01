@@ -5,7 +5,7 @@ export const ResultsContext = createContext()
 
 const ResultsContextProvider = ({ children }) => {
 
-  const [result, setResult] = useState(null)
+  const [result, setResult] = useState({})
 
   useEffect(() => {
 

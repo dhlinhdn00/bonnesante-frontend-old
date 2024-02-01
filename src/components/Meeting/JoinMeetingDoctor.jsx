@@ -12,7 +12,7 @@ function JoinMeetingDoctor() {
     return (
         <div className={style.container}>
 
-            <Meeting role={1} meetingNumber='82216238185' passWord='NUzrk7' />
+            <Meeting role={1} meetingNumber='83495564383' passWord='RP2tTE' />
 
             <ModalDoctor />
         </div>

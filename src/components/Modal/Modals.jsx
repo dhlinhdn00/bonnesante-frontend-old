@@ -13,6 +13,8 @@ import { useLocation } from 'react-router-dom';
 import useResultsContext from '../../hooks/useResultsContext';
 
 function Modals({ data }) {
+
+    console.log("data from Modals", data)
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
