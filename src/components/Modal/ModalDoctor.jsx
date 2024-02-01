@@ -9,9 +9,7 @@ import useResultsContext from '../../hooks/useResultsContext';
 import Modals from './Modals';
 
 function ModalDoctor() {
-    const [dataResult, setDataResult] = useState({})
-
-    const { setResult } = useResultsContext()
+    const { result, setResult } = useResultsContext()
 
     const location = useLocation()
 
@@ -22,16 +20,14 @@ function ModalDoctor() {
     onValue((child(dbRef, `result/${userID}/result`)), (snapshot) => {
         const data = snapshot.val();
 
-        if (dataResult.id !== data.id) {
-            // for data result context
+        if (result.resultId !== data.resultId) {
             setResult(data);
-            setDataResult(data);
         }
     });
 
     return (
         <>
-            <Modals data={dataResult} />
+            <Modals data={result} />
         </>
     );
 }

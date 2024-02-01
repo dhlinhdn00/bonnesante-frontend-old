@@ -1,6 +1,6 @@
 import style from './Meeting.module.css';
 
-import React from 'react';
+import React, { useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import ZoomMtgEmbedded from '@zoom/meetingsdk/embedded';
@@ -12,19 +12,17 @@ import { database } from "../../services/firebase/config";
 import { ZOOM_SIGN_URL } from '../../constants/values';
 
 
-function Meeting({ role = 0, meetingNumber = '82216238185', passWord = 'NUzrk7' }) {
+function Meeting({ role = 0 }) {
     const [stateMeeting, setStateMeeting] = React.useState(false);
 
     const [stateConnect, setStateConnect] = React.useState(false);
 
-
-
     var authEndpoint = ZOOM_SIGN_URL
     var sdkKey = 'LPqZQdOeTCWdA5fspfFWmg'
-    var meetingNumber = '82216238185'
-    var passWord = 'NUzrk7'
+    var meetingNumber = "7602498268"
+    var passWord = "3DtcbR"
     var role = role
-    var userName = 'React'
+    var userName = 'Doctor'
     var userEmail = ''
     var registrantToken = ''
     var zakToken = ''
@@ -32,12 +30,11 @@ function Meeting({ role = 0, meetingNumber = '82216238185', passWord = 'NUzrk7' 
 
     const location = useLocation()
 
+    const refElement = useRef(null);
 
 
     const handleConfirm = async () => {
         const { userID } = location.state
-
-        console.log(userConfirmed)
 
         const updates = {
             [`videoCall/${userID}/isAccepted`]: true
@@ -50,7 +47,7 @@ function Meeting({ role = 0, meetingNumber = '82216238185', passWord = 'NUzrk7' 
         // Update the specified location with the updates object
         try {
             await update(dbRef, updates);
-            console.log(`User with ID ${userConfirmed.userID} has been confirmed.`);
+            console.log(`User with ID ${userID} has been confirmed.`);
         } catch (error) {
             console.error('Error updating user confirmation:', error);
         }
@@ -75,17 +72,34 @@ function Meeting({ role = 0, meetingNumber = '82216238185', passWord = 'NUzrk7' 
             })
     }
 
+    const clientJoin = async (client, signature) => {
+        client.join({
+            signature: signature,
+            sdkKey: sdkKey,
+            meetingNumber: meetingNumber,
+            password: passWord,
+            userName: userName,
+            userEmail: userEmail,
+            tk: registrantToken,
+            zak: zakToken
+        })
+    }
+
     function startMeeting(signature) {
 
         var client
         try {
             client = ZoomMtgEmbedded.destroyClient();
             client = ZoomMtgEmbedded.createClient();
+            console.log(client)
         } catch (e) {
+            console.log(e)
             client = ZoomMtgEmbedded.createClient();
         }
 
         let meetingSDKElement = document.getElementById('meetingSDKElement');
+
+        console.log(meetingSDKElement)
 
         client.init({ zoomAppRoot: meetingSDKElement, language: 'en-US', patchJsMedia: true }).then(() => {
             client.join({
@@ -98,11 +112,20 @@ function Meeting({ role = 0, meetingNumber = '82216238185', passWord = 'NUzrk7' 
                 tk: registrantToken,
                 zak: zakToken
             }).then(async () => {
-                setStateMeeting(true);
+                // setStateMeeting(true);
+
+                console.log("init")
+                // console.log(ref.current.firstChild)
+
+                if (!refElement.current.firstChild) {
+                    console.log("do join")
+                    await clientJoin(client, signature)
+                }
 
                 if (role === 1) {
                     await handleConfirm();
                 }
+
                 console.log('joined successfully')
             }).catch((error) => {
                 console.log(error)
@@ -112,10 +135,43 @@ function Meeting({ role = 0, meetingNumber = '82216238185', passWord = 'NUzrk7' 
         })
     }
 
+    // async function startMeeting(signature) {
+
+    //     var client
+    //     try {
+    //         client = ZoomMtgEmbedded.destroyClient();
+    //         client = ZoomMtgEmbedded.createClient();
+    //         console.log(client)
+    //     } catch (e) {
+    //         console.log(e)
+    //         client = ZoomMtgEmbedded.createClient();
+    //     }
+
+    //     let meetingSDKElement = document.getElementById('meetingSDKElement');
+
+    //     console.log(meetingSDKElement)
+
+    //     await client.init({ zoomAppRoot: meetingSDKElement, language: 'en-US', patchJsMedia: true })
+
+    //     await clientJoin(client, signature)
+
+    //     console.log("after join")
+
+    //     if (!refElement.current.firstChild) {
+    //         console.log("not element")
+    //         await clientJoin(client, signature)
+    //     }
+
+    //     if (role === 1) {
+    //         await handleConfirm();
+    //     }
+
+    // }
+
     return (
         <div>
             {/* For Component View */}
-            <div id="meetingSDKElement" className={style.meetingSDKElement}>
+            <div ref={refElement} id="meetingSDKElement" className={style.meetingSDKElement}>
                 {/* Zoom Meeting SDK Component View Rendered Here */}
             </div>
 
