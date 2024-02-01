@@ -1,6 +1,6 @@
 import style from './Meeting.module.css';
 
-import React, { useRef } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
 
 import ZoomMtgEmbedded from '@zoom/meetingsdk/embedded';
@@ -29,9 +29,6 @@ function Meeting({ role = 0 }) {
     var leaveUrl = 'http://localhost:3000'
 
     const location = useLocation()
-
-    const refElement = useRef(null);
-
 
     const handleConfirm = async () => {
         const { userID } = location.state
