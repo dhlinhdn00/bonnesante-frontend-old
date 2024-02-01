@@ -3,7 +3,7 @@ import React from 'react'
 
 function VideoCamera({ errorState, videoRef }) {
   return (
-    <div id='video_camera' className={css.videoCamera}>
+    <div id='video_camera' className={css.videoCamera} style={{ display:'flex', justifyContent:'center', alignItems:'center' }}>
       <video
         id='videoElement'
         className={`${css.videoElement} ${errorState ? css.active : ''}`}

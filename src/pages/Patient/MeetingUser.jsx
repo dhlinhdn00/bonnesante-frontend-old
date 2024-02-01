@@ -25,9 +25,9 @@ const MeetingUser = () => {
 
   return (
     <div className={style.page}>
-      <div className={style.container}>
+      <div className={style.containerMeetingUser}>
         <HeaderBar />
-        <div className={style.content}>
+        <div className={style.contentMeetingUser}>
           {
             isAccepted ? <Meeting /> : <FindingDoctor />
           }

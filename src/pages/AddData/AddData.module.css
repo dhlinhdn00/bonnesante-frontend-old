@@ -23,13 +23,13 @@
     display: grid;
 }
 
-.content img {
+/* .content img {
     width: 100%;
     min-width: 85%;
     min-height: 400px;
     object-fit: cover;
     justify-self: center;
-}
+} */
 
 .content h3 {
     font-size: 20px;
