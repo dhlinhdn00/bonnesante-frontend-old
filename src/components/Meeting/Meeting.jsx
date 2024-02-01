@@ -72,28 +72,13 @@ function Meeting({ role = 0 }) {
             })
     }
 
-    const clientJoin = async (client, signature) => {
-        client.join({
-            signature: signature,
-            sdkKey: sdkKey,
-            meetingNumber: meetingNumber,
-            password: passWord,
-            userName: userName,
-            userEmail: userEmail,
-            tk: registrantToken,
-            zak: zakToken
-        })
-    }
-
     function startMeeting(signature) {
 
         var client
         try {
             client = ZoomMtgEmbedded.destroyClient();
             client = ZoomMtgEmbedded.createClient();
-            console.log(client)
         } catch (e) {
-            console.log(e)
             client = ZoomMtgEmbedded.createClient();
         }
 
@@ -112,20 +97,11 @@ function Meeting({ role = 0 }) {
                 tk: registrantToken,
                 zak: zakToken
             }).then(async () => {
-                // setStateMeeting(true);
-
-                console.log("init")
-                // console.log(ref.current.firstChild)
-
-                if (!refElement.current.firstChild) {
-                    console.log("do join")
-                    await clientJoin(client, signature)
-                }
+                setStateMeeting(true);
 
                 if (role === 1) {
                     await handleConfirm();
                 }
-
                 console.log('joined successfully')
             }).catch((error) => {
                 console.log(error)
@@ -135,43 +111,10 @@ function Meeting({ role = 0 }) {
         })
     }
 
-    // async function startMeeting(signature) {
-
-    //     var client
-    //     try {
-    //         client = ZoomMtgEmbedded.destroyClient();
-    //         client = ZoomMtgEmbedded.createClient();
-    //         console.log(client)
-    //     } catch (e) {
-    //         console.log(e)
-    //         client = ZoomMtgEmbedded.createClient();
-    //     }
-
-    //     let meetingSDKElement = document.getElementById('meetingSDKElement');
-
-    //     console.log(meetingSDKElement)
-
-    //     await client.init({ zoomAppRoot: meetingSDKElement, language: 'en-US', patchJsMedia: true })
-
-    //     await clientJoin(client, signature)
-
-    //     console.log("after join")
-
-    //     if (!refElement.current.firstChild) {
-    //         console.log("not element")
-    //         await clientJoin(client, signature)
-    //     }
-
-    //     if (role === 1) {
-    //         await handleConfirm();
-    //     }
-
-    // }
-
     return (
         <div>
             {/* For Component View */}
-            <div ref={refElement} id="meetingSDKElement" className={style.meetingSDKElement}>
+            <div id="meetingSDKElement" className={style.meetingSDKElement}>
                 {/* Zoom Meeting SDK Component View Rendered Here */}
             </div>
 

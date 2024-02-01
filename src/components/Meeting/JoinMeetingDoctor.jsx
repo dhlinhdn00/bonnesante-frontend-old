@@ -10,7 +10,7 @@ function JoinMeetingDoctor() {
     // const [stateMeasure, setStateMeasure] = React.useState(false);
 
     return (
-        <div className={style.container}>
+        <div className={style.containerMeetingDoctor}>
 
             <Meeting role={1} meetingNumber='83495564383' passWord='RP2tTE' />
 
