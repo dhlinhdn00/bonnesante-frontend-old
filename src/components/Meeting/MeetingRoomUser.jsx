@@ -104,7 +104,8 @@ function MeetingRoomUser({ role = 0, userID }) {
             client = ZoomMtgEmbedded.destroyClient();
             setIsStateMeeting(false)
 
-            setTimeout(() => { navigate("/home") }, 1500)
+            alert("The meeting has ended, you will return to the home page")
+            navigate("/home")
         }
     });
 
@@ -115,7 +116,7 @@ function MeetingRoomUser({ role = 0, userID }) {
             <div id="meetingSDKElement" className={style.meetingSDKElement}>
                 {/* Zoom Meeting SDK Component View Rendered Here */}
             </div>
-            {!isMeeting ? <ToastResult isSuccess={true} show={true} setShow={() => { }} messages="The meeting has ended, you will return to the home page in a few seconds" /> : ""}
+
             <div>
                 {stateConnect ? "" : <button onClick={getSignature}>{stateConnect ? "Connecting ..." : "Join Meeting"}</button>}
             </div>

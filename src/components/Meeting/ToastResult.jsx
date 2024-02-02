@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Toast from 'react-bootstrap/Toast';
 
-const ToastResult = ({ isSuccess, show, setShow, messages }) => {
+const ToastResult = ({ isSuccess, show, setShow }) => {
 
     return (
         <Toast className="position-fixed top-0 start-50 translate-middle" onClose={() => setShow(false)} show={show} delay={3000} autohide bg={isSuccess ? "success" : "danger"}>
@@ -12,7 +12,7 @@ const ToastResult = ({ isSuccess, show, setShow, messages }) => {
                 {isSuccess ? (
                     <div>
                         <p>Success</p>
-                        <p>{messages ? messages : "Measure successfully, check the result now!"}</p>
+                        <p>{"Measure successfully, check the result now!"}</p>
                     </div>
                 ) : (
                     <div>
