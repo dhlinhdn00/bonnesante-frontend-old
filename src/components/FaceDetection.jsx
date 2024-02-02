@@ -127,6 +127,7 @@ const FaceDetectionComponent = props => {
                 console.log(error)
               })
 
+              // patient page
             if (props.isAddData) {
               navigate("/result")
             }

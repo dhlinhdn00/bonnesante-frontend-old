@@ -10,7 +10,7 @@
     font-family: Nunito Sans;
 }
 
-.container {
+.containerAddData {
     margin: 0 auto;
     width: 85%;
     max-width: 1000px;
@@ -21,6 +21,14 @@
     height: 100%;
     margin: 20px auto;
     display: grid;
+}
+
+.addDataImage {
+    width: 100%;
+    min-width: 85%;
+    min-height: 400px;
+    object-fit: cover;
+    justify-self: center;
 }
 
 /* .content img {

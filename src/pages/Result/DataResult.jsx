@@ -8,6 +8,7 @@ import { PieChart } from './PieChart'
 
 const DataResult = ({ data }) => {
   const { results } = data;
+
   console.log("results", results);
 
   return (

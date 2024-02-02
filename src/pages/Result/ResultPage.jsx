@@ -16,7 +16,7 @@ const DataResult = lazy(() => delayForDemo(import('./DataResult')));
 
 const ResultPage = () => {
     const navigate = useNavigate();
-    const {result, setResult} = useResultsContext();
+    const { result, setResult } = useResultsContext();
     return (
         <div className={style.page}>
             <div className={style.container}>
@@ -24,7 +24,7 @@ const ResultPage = () => {
                 <div className={style.loading_data}>
                     {result &&
                         (<Suspense fallback={<Loading />}>
-                            <DataResult results={result} />
+                            <DataResult data={{ results: result }} />
                         </Suspense>)
                     }
                 </div>

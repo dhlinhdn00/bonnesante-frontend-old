@@ -10,7 +10,7 @@ import Login from './pages/Login/Login.jsx'
 import SignUp from './pages/SignUp/SignUp.jsx'
 import AddData from './pages/AddData/AddData.jsx'
 import LoadResult from './pages/LoadResult/LoadResult.jsx'
-import ListResult from './pages/Result/History.jsx'
+// import ListResult from './pages/Result/History.jsx'
 import Home from './pages/Home/Home.jsx'
 import ResultPage from './pages/Result/ResultPage.jsx'
 import { PieChart } from './pages/Result/PieChart.jsx'
@@ -21,6 +21,7 @@ import MeetingDoctor from './pages/Doctors/Meeting/MeetingDoctor.jsx'
 import MeetingUser from './pages/Patient/MeetingUser.jsx'
 import UserContextProvider from './contexts/userContext'
 import ResultsContextProvider, { ResultsContext } from './contexts/resultsContext'
+import History from './pages/Result/History.jsx'
 
 const rootElement = document.getElementById('root')
 if (rootElement) {
@@ -44,7 +45,7 @@ if (rootElement) {
           } />
           <Route path='/history' element={
             <ProtectedRoutes>
-              <CheckUser user={<ListResult />} doctor={<><h1>You are doctor</h1></>} />
+              <CheckUser user={<History />} doctor={<><h1>You are doctor</h1></>} />
             </ProtectedRoutes>
           } />
           <Route path='/result' element={

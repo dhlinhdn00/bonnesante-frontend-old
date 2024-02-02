@@ -7,6 +7,7 @@ import { ref, set, onValue, child } from 'firebase/database'
 import { database } from '../../services/firebase/config'
 import useUserContext from '../../hooks/useUserContext'
 import MeetingRoomUser from '../../components/Meeting/MeetingRoomUser'
+import JoinMeetingUser from '../../components/Meeting/JoinMeetingUser'
 
 const MeetingUser = () => {
   const [isAccepted, setIsAccepted] = useState(false);
@@ -30,7 +31,8 @@ const MeetingUser = () => {
         <HeaderBar />
         <div className={style.contentMeetingUser}>
           {
-            isAccepted ? <MeetingRoomUser userID={user.id} /> : <FindingDoctor />
+            // isAccepted ? <MeetingRoomUser userID={user.id} /> : <FindingDoctor />
+            isAccepted ? <JoinMeetingUser /> : <FindingDoctor />
           }
         </div>
       </div>

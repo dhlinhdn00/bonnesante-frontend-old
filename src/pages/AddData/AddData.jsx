@@ -9,10 +9,10 @@ const AddData = () => {
 
   return (
     <div className={style.page}>
-      <div className={style.container}>
+      <div className={style.containerAddData}>
         <HeaderBar />
         <div className={style.content}>
-          <img src={doctorIcon} alt='' />
+          <img src={doctorIcon} alt='' className={style.addDataImage} />
           <h3>Add your first measurement</h3>
           <p>Comment about heart comment about heart comment about heart Comment about heart comment about heart </p>
         </div>

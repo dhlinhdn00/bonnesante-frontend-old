@@ -10,7 +10,7 @@ import useUserContext from '../../hooks/useUserContext';
 
 import MeetingRoomUser from './MeetingRoomUser';
 
-function MeetingUser() {
+function JoinMeetingUser() {
 
   const [stateMeasure, setStateMeasure] = React.useState(false);
   const { result } = useResultsContext();
@@ -39,4 +39,4 @@ function MeetingUser() {
     </div>
   );
 }
-export default MeetingUser;
+export default JoinMeetingUser;

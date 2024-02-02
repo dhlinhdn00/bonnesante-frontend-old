@@ -60,9 +60,9 @@ export default function Home() {
             <ion-icon name="chevron-forward-outline"></ion-icon>
           </Link>}
 
-        <Link className={style.card} to="/result">
+        <Link className={style.card} to="/history">
           <img src={scheduleIcon} alt="schedule icon" />
-          <p>Make an Appointment</p>
+          <p>History</p>
           <ion-icon name="chevron-forward-outline"></ion-icon>
         </Link>
       </div>

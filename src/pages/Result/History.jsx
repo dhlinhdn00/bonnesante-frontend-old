@@ -7,10 +7,13 @@ import { Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import DataResult from './DataResult'
+import useResultsContext from '../../hooks/useResultsContext'
 
 const History = () => {
   let navigate = useNavigate();
   function renderData() { };
+
+  const { result } = useResultsContext()
 
   return (
     <div className={style.page}>
@@ -24,22 +27,16 @@ const History = () => {
           className={style.content}
         >
           <SwiperSlide>
-            <DataResult />
+            <DataResult data={{ results: result }} />
           </SwiperSlide>
           <SwiperSlide>
-            <DataResult />
+            <DataResult data={{ results: result }} />
           </SwiperSlide>
           <SwiperSlide>
-            <DataResult />
+            <DataResult data={{ results: result }} />
           </SwiperSlide>
           <SwiperSlide>
-            <DataResult />
-          </SwiperSlide>
-          <SwiperSlide>
-            <DataResult />
-          </SwiperSlide>
-          <SwiperSlide>
-            <DataResult />
+            <DataResult data={{ results: result }} />
           </SwiperSlide>
         </Swiper>
         <button className={style.button} onClick={() => navigate('/add-data')}>

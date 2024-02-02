@@ -13,8 +13,6 @@ const LoadResult = () => {
     navigator(-1);
   };
 
-
-
   return (
     <div className={style.page}>
       <div className={style.container}>
