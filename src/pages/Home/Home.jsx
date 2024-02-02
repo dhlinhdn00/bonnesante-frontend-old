@@ -60,11 +60,11 @@ export default function Home() {
             <ion-icon name="chevron-forward-outline"></ion-icon>
           </Link>}
 
-        <Link className={style.card} to="/history">
+        {!user.isStaff ? <Link className={style.card} to="/history">
           <img src={scheduleIcon} alt="schedule icon" />
           <p>History</p>
           <ion-icon name="chevron-forward-outline"></ion-icon>
-        </Link>
+        </Link> : <div></div>}
       </div>
     </div>
   )
