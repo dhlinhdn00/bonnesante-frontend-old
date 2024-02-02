@@ -30,7 +30,7 @@ const MeetingUser = () => {
         <HeaderBar />
         <div className={style.contentMeetingUser}>
           {
-            isAccepted ? <MeetingRoomUser /> : <FindingDoctor />
+            isAccepted ? <MeetingRoomUser userID={user.id} /> : <FindingDoctor />
           }
         </div>
       </div>
