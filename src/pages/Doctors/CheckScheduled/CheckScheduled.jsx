@@ -27,7 +27,6 @@ export default function CheckScheduled() {
         }
     });
 
-
     // const handleConfirm = async (values) => {
     //     const userConfirmed = schedules.find((value) => value.userID === values.userID)
 

@@ -18,7 +18,9 @@ const MeetingUser = () => {
 
   onValue((child(dbRef, `videoCall/${user.id}`)), (snapshot) => {
     const requestInfo = snapshot.val();
+
     console.log(requestInfo)
+
     if (requestInfo.isAccepted !== isAccepted) {
       setIsAccepted(requestInfo.isAccepted);
     }

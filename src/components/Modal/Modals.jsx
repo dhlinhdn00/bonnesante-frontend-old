@@ -12,7 +12,7 @@ import { database } from "../../services/firebase/config";
 import { useLocation } from 'react-router-dom';
 import useResultsContext from '../../hooks/useResultsContext';
 
-function Modals({ data }) {
+function Modals({ data, isDataOutDated }) {
 
     console.log("data from Modals", data)
     const [show, setShow] = useState(false);
@@ -22,7 +22,7 @@ function Modals({ data }) {
 
     return (
         <>
-            <img className={style.icon} src={showIcon} onClick={handleShow} />
+            {isDataOutDated ? "" : <img className={style.icon} src={showIcon} onClick={handleShow} />}
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>

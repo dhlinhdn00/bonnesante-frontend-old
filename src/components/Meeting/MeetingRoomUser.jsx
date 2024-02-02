@@ -101,10 +101,11 @@ function MeetingRoomUser({ role = 0, userID }) {
         console.log(requestInfo)
 
         if (!requestInfo.isMeeting) {
+            alert("The meeting has ended, you will return to the home page")
+
             client = ZoomMtgEmbedded.destroyClient();
             setIsStateMeeting(false)
 
-            alert("The meeting has ended, you will return to the home page")
             navigate("/home")
         }
     });
