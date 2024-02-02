@@ -1,7 +1,7 @@
 import style from './Meeting.module.css';
 
-import React from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import ZoomMtgEmbedded from '@zoom/meetingsdk/embedded';
 
@@ -12,10 +12,12 @@ import { database } from "../../services/firebase/config";
 import { ZOOM_SIGN_URL } from '../../constants/values';
 
 
-function Meeting({ role = 0 }) {
+function MeetingRoomDoctor({ role = 0 }) {
     const [stateMeeting, setStateMeeting] = React.useState(false);
 
     const [stateConnect, setStateConnect] = React.useState(false);
+
+    const navigate = useNavigate();
 
     var authEndpoint = ZOOM_SIGN_URL
     var sdkKey = 'LPqZQdOeTCWdA5fspfFWmg'
@@ -30,16 +32,19 @@ function Meeting({ role = 0 }) {
 
     const location = useLocation()
 
-    const handleConfirm = async () => {
-        const { userID } = location.state
+    const { userID } = location.state
 
+    const dbRef = ref(database);
+
+    var client;
+
+    const handleConfirm = async () => {
         const updates = {
             [`videoCall/${userID}/isAccepted`]: true
         };
 
         console.log(updates)
         // Get a reference to the database
-        const dbRef = ref(database);
 
         // Update the specified location with the updates object
         try {
@@ -70,8 +75,7 @@ function Meeting({ role = 0 }) {
     }
 
     function startMeeting(signature) {
-
-        var client
+        // var client
         try {
             client = ZoomMtgEmbedded.destroyClient();
             client = ZoomMtgEmbedded.createClient();
@@ -96,9 +100,8 @@ function Meeting({ role = 0 }) {
             }).then(async () => {
                 setStateMeeting(true);
 
-                if (role === 1) {
-                    await handleConfirm();
-                }
+                await handleConfirm();
+
                 console.log('joined successfully')
             }).catch((error) => {
                 console.log(error)
@@ -108,17 +111,40 @@ function Meeting({ role = 0 }) {
         })
     }
 
+    const handleEndMeeting = async () => {
+        client.destroyClient()
+
+        const updates = {
+            [`videoCall/${userID}/isMeeting`]: false
+        };
+
+        console.log(updates)
+        // Get a reference to the database
+        // const dbRef = ref(database);
+
+        // Update the specified location with the updates object
+        try {
+            await update(dbRef, updates);
+
+            console.log(`User with ID ${userID} has been confirmed.`);
+        } catch (error) {
+            console.error('Error updating user confirmation:', error);
+        }
+
+        navigate("/home")
+    }
+
     return (
         <div>
             {/* For Component View */}
             <div id="meetingSDKElement" className={style.meetingSDKElement}>
                 {/* Zoom Meeting SDK Component View Rendered Here */}
             </div>
-
+            {stateMeeting ? <button onClick={handleEndMeeting}>End meeting</button> : ""}
             <div>
                 {stateConnect ? "" : <button onClick={getSignature}>{stateConnect ? "Connecting ..." : "Join Meeting"}</button>}
             </div>
         </div>
     );
 }
-export default Meeting;
+export default MeetingRoomDoctor;

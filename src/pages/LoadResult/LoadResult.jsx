@@ -13,6 +13,8 @@ const LoadResult = () => {
     navigator(-1);
   };
 
+
+
   return (
     <div className={style.page}>
       <div className={style.container}>
@@ -26,7 +28,7 @@ const LoadResult = () => {
               </div>
             </div>
           </div>
-          <FaceDetectionComponent cancelState={cancelState} />
+          <FaceDetectionComponent cancelState={cancelState} isAddData={true} />
           <h3>We are analyzing your measurement</h3>
           <button className={style.button} onClick={handleCancel}>
             Cancel

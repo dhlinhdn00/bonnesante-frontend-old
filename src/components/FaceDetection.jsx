@@ -13,13 +13,15 @@ import ToastResult from './Meeting/ToastResult'
 import uuid from 'react-uuid'
 
 const FaceDetectionComponent = props => {
-  const { user, saveUser } = useUserContext()
+
   let cancelStateProp = props.cancelState;
+
   const [cancelState, setCancelState] = useState(cancelStateProp);
   const [errorState, setErrorState] = useState(false);
   const [isFinish, setIsFinish] = useState(false)
   const [showToast, setShowToast] = useState(false)
 
+  const { user, saveUser } = useUserContext()
   const { result, setResult } = useResultsContext();
 
   const intervalRef = useRef(null)
@@ -35,7 +37,7 @@ const FaceDetectionComponent = props => {
 
   const [recordedChunks, setRecordedChunks] = useState([]);
 
-  const navigater = useNavigate();
+  const navigate = useNavigate();
 
   async function getCameraStream() {
 
@@ -103,7 +105,6 @@ const FaceDetectionComponent = props => {
             console.log('response', response.data)
             localStorage.setItem('result', JSON.stringify(response.data))
 
-
             // toast
             setShowToast(true)
 
@@ -111,6 +112,7 @@ const FaceDetectionComponent = props => {
               ...response.data,
               resultId: uuid(),
             }
+
             setResult(dataResult)
 
             set(child(dbRef, `result/` + user.id), {
@@ -124,6 +126,10 @@ const FaceDetectionComponent = props => {
               .catch((error) => {
                 console.log(error)
               })
+
+            if (props.isAddData) {
+              navigate("/result")
+            }
           }
         })
         .catch(error => {

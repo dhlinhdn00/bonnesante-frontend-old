@@ -1,15 +1,21 @@
 import React from 'react';
 import style from './Meeting.module.css';
 import FaceDetectionComponent from '../FaceDetection';
-import Meeting from './Meeting';
+// import Meeting from './MeetingRoomDoctor';
 import { MeasureModal } from './MeasureModal';
 import Modals from '../Modal/Modals';
+
 import useResultsContext from '../../hooks/useResultsContext';
+import useUserContext from '../../hooks/useUserContext';
+
+import MeetingRoomUser from './MeetingRoomUser';
 
 function MeetingUser() {
 
   const [stateMeasure, setStateMeasure] = React.useState(false);
   const { result } = useResultsContext();
+
+  const { user } = useUserContext();
 
   const getMeasure = () => {
     setStateMeasure(true);
@@ -18,7 +24,7 @@ function MeetingUser() {
   return (
     <div>
       <main>
-        <Meeting role={0} meetingNumber='82216238185' passWord='NUzrk7' />
+        <MeetingRoomUser role={0} userID={user.id} />
 
         <Modals data={result} />
 

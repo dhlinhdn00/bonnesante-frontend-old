@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import style from './MeetingUser.module.css'
 import HeaderBar from '../../components/HeaderBar/HeaderBar'
 import FindingDoctor from '../../lazy/FindingDoctor'
-import Meeting from '../../components/Meeting/JoinMeetingUser'
+
 import { ref, set, onValue, child } from 'firebase/database'
 import { database } from '../../services/firebase/config'
 import useUserContext from '../../hooks/useUserContext'
+import MeetingRoomUser from '../../components/Meeting/MeetingRoomUser'
 
 const MeetingUser = () => {
   const [isAccepted, setIsAccepted] = useState(false);
@@ -29,7 +30,7 @@ const MeetingUser = () => {
         <HeaderBar />
         <div className={style.contentMeetingUser}>
           {
-            isAccepted ? <Meeting /> : <FindingDoctor />
+            isAccepted ? <MeetingRoomUser /> : <FindingDoctor />
           }
         </div>
       </div>

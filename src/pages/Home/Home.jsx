@@ -23,6 +23,7 @@ export default function Home() {
       doctorID: null,
       timeRequest: new Date().getTime(),
       timeAccepted: null,
+      isMeeting: true
     })
       .then(() => {
         console.log('success')

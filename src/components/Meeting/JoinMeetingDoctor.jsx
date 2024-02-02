@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Meeting from './Meeting';
 import ModalDoctor from '../Modal/ModalDoctor';
 
 import style from "./Meeting.module.css"
+import MeetingRoomDoctor from './MeetingRoomDoctor';
 
 function JoinMeetingDoctor() {
 
@@ -12,7 +12,7 @@ function JoinMeetingDoctor() {
     return (
         <div className={style.containerMeetingDoctor}>
 
-            <Meeting role={1} meetingNumber='83495564383' passWord='RP2tTE' />
+            <MeetingRoomDoctor role={1} />
 
             <ModalDoctor />
         </div>
