@@ -10,6 +10,9 @@ import useUserContext from '../../hooks/useUserContext';
 
 import MeetingRoomUser from './MeetingRoomUser';
 
+import { ref, child, get, update, onValue } from "firebase/database";
+import { database } from "../../services/firebase/config";
+
 function JoinMeetingUser() {
 
   const [stateMeasure, setStateMeasure] = React.useState(false);
@@ -17,10 +20,11 @@ function JoinMeetingUser() {
 
   const { user } = useUserContext();
 
+  const dbRef = ref(database);
+
   const getMeasure = () => {
     setStateMeasure(true);
   }
-
 
   onValue((child(dbRef, `result/${user.id}/result`)), (snapshot) => {
     const data = snapshot.val();
@@ -29,7 +33,6 @@ function JoinMeetingUser() {
       setResult(data);
     }
   });
-
 
   return (
     <div>

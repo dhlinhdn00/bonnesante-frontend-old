@@ -6,7 +6,7 @@ import FindingDoctor from '../../lazy/FindingDoctor'
 import { ref, set, onValue, child } from 'firebase/database'
 import { database } from '../../services/firebase/config'
 import useUserContext from '../../hooks/useUserContext'
-import MeetingRoomUser from '../../components/Meeting/MeetingRoomUser'
+// import MeetingRoomUser from '../../components/Meeting/MeetingRoomUser'
 import JoinMeetingUser from '../../components/Meeting/JoinMeetingUser'
 
 const MeetingUser = () => {
