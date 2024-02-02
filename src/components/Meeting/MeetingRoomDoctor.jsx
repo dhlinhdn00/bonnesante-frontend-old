@@ -112,7 +112,7 @@ function MeetingRoomDoctor({ role = 0 }) {
     }
 
     const handleEndMeeting = async () => {
-        client.destroyClient()
+        client = ZoomMtgEmbedded.destroyClient();
 
         const updates = {
             [`videoCall/${userID}/isMeeting`]: false

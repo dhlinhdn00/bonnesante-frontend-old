@@ -101,7 +101,7 @@ function MeetingRoomUser({ role = 0, userID }) {
         console.log(requestInfo)
 
         if (!requestInfo.isMeeting) {
-            client.destroyClient()
+            client = ZoomMtgEmbedded.destroyClient();
             setIsStateMeeting(false)
 
             setTimeout(() => { navigate("/home") }, 1500)
