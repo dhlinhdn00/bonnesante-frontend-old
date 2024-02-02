@@ -111,6 +111,7 @@ const FaceDetectionComponent = props => {
             const dataResult = {
               ...response.data,
               resultId: uuid(),
+              isOutDated: false
             }
 
             setResult(dataResult)

@@ -27,7 +27,7 @@ function ModalDoctor() {
 
     return (
         <>
-            <Modals data={result} />
+            <Modals data={result} isDataOutDated={result.isOutDated} />
         </>
     );
 }

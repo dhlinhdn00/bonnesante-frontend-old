@@ -13,7 +13,7 @@ import MeetingRoomUser from './MeetingRoomUser';
 function MeetingUser() {
 
   const [stateMeasure, setStateMeasure] = React.useState(false);
-  const { result } = useResultsContext();
+  const { result, setResult } = useResultsContext();
 
   const { user } = useUserContext();
 
@@ -21,12 +21,22 @@ function MeetingUser() {
     setStateMeasure(true);
   }
 
+
+  onValue((child(dbRef, `result/${user.id}/result`)), (snapshot) => {
+    const data = snapshot.val();
+
+    if (result.isOutDated !== data.isOutDated) {
+      setResult(data);
+    }
+  });
+
+
   return (
     <div>
       <main>
         <MeetingRoomUser role={0} userID={user.id} />
 
-        <Modals data={result} />
+        <Modals data={result} isDataOutDated={result.isOutDated} />
 
         {stateMeasure ? (
           <MeasureModal />

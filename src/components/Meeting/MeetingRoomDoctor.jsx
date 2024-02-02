@@ -43,11 +43,16 @@ function MeetingRoomDoctor({ role = 0 }) {
             [`videoCall/${userID}/isAccepted`]: true
         };
 
+        const UpdateOutDatedResult = {
+            [`result/${userID}/result/isOutDated`]: true
+        }
+
         console.log(updates)
         // Get a reference to the database
 
         // Update the specified location with the updates object
         try {
+            await update(dbRef, UpdateOutDatedResult)
             await update(dbRef, updates);
             console.log(`User with ID ${userID} has been confirmed.`);
         } catch (error) {
