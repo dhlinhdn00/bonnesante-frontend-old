@@ -111,7 +111,7 @@ const FaceDetectionComponent = props => {
             const dataResult = {
               ...response.data,
               resultId: uuid(),
-              isOutDated: false
+              isOutDated: props.isAddData ? true : false
             }
 
             setResult(dataResult)
@@ -128,7 +128,7 @@ const FaceDetectionComponent = props => {
                 console.log(error)
               })
 
-              // patient page
+            // patient page
             if (props.isAddData) {
               navigate("/result")
             }

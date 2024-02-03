@@ -8,7 +8,7 @@ export const MeasureModal = () => {
     return (
         <Modal show={show}>
             <Modal.Body >
-                <FaceDetectionComponent setShow={setShow} />
+                <FaceDetectionComponent setShow={setShow} isAddData={false} />
             </Modal.Body>
         </Modal>
     )
