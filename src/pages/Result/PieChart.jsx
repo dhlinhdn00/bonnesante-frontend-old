@@ -6,7 +6,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 
 export function PieChart() {
-    const {result, setResult} = useResultsContext();
+    const { result, setResult } = useResultsContext();
     const [data, setData] = useState({
         labels: ['Normal', 'SVEB', 'VEB', 'FB'],
         datasets: [
@@ -34,7 +34,7 @@ export function PieChart() {
 
     return <><Pie data={data} />
         <p style={{ marginTop: '20px', fontWeight: 'bold', fontSize: '20px' }}>
-            Heart Arrythmia: {result.diagnostic.normal === 100 ? 'Normal' : 'Abnormal'}
+            Heart Arrythmia: {((result.diagnostic.normal) / (result.diagnostic.normal + result.diagnostic.sveb + result.diagnostic.veb + result.diagnostic.fb)) > 75 ? 'Normal' : 'Abnormal'}
         </p>
     </>;
 }
