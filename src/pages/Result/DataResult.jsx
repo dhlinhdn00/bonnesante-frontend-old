@@ -13,7 +13,7 @@ const DataResult = ({ data }) => {
 
   return (
     <div className={style.data_container}>
-      <h2>20 / 01 / 2024</h2>
+      <h2>24 / 02 / 2024</h2>
       <div className={style.chart}>
         <Chart />
       </div>

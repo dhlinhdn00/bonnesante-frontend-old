@@ -22,7 +22,7 @@ function MeetingRoomDoctor({ role = 0 }) {
     var authEndpoint = ZOOM_SIGN_URL
     var sdkKey = 'LPqZQdOeTCWdA5fspfFWmg'
     var meetingNumber = "7602498268"
-    var passWord = "3DtcbR"
+    var passWord = "452002"
     var role = role
     var userName = 'Doctor'
     var userEmail = ''
@@ -80,6 +80,7 @@ function MeetingRoomDoctor({ role = 0 }) {
     }
 
     function startMeeting(signature) {
+        console.log('Signature:', signature)
         // var client
         try {
             client = ZoomMtgEmbedded.destroyClient();

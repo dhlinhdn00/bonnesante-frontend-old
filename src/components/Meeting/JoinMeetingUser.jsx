@@ -19,6 +19,7 @@ function JoinMeetingUser() {
   const { result, setResult } = useResultsContext();
 
   const { user } = useUserContext();
+  console.log(user.id);
 
   const dbRef = ref(database);
 

@@ -59,7 +59,7 @@ export default function CheckScheduled() {
 
                 <ul>
                     {schedules?.map((value, index) => {
-                        return (<li key={index} className={style.schedule}>Monday 29 January {value.username}
+                        return (<li key={index} className={style.schedule}>Saturday, 29 Feb {value.username}
                             <Link to="/doctor/meeting" state={{ userID: value.userID }}>
                                 {/* <img src={check} alt="check" className={style.check} onClick={() => handleConfirm(value)} /> */}
                                 <img src={check} alt="check" className={style.check} />
