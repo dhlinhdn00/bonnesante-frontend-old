@@ -6,10 +6,10 @@ export const UserContext = createContext();
 const UserContextProvider = ({ children }) => {
 
   const [user, setUser] = useState({
-    id: 2,
-    username: 'Benh Nhan 1',
+    id: 3,
+    username: 'Bac Si',
     isAuthenticated: false,
-    isStaff: false,
+    isStaff: true,
   })
 
   const saveUser = (user) => {

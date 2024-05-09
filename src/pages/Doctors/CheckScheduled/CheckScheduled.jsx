@@ -11,15 +11,13 @@ import { Link } from 'react-router-dom'
 
 
 export default function CheckScheduled() {
-    console.log("re render")
     const [schedules, setSchedules] = useState([{}])
-
 
     const dbRef = ref(database);
 
     onValue((child(dbRef, 'videoCall/')), (snapshot) => {
         const data = snapshot.val();
-        console.log(data)
+
         const schedulesArray = Object.values(data);
 
         if (schedulesArray.length !== schedules.length) {
@@ -27,27 +25,27 @@ export default function CheckScheduled() {
         }
     });
 
-    // const handleConfirm = async (values) => {
-    //     const userConfirmed = schedules.find((value) => value.userID === values.userID)
+    const handleConfirm = async (values) => {
+        const userConfirmed = schedules.find((value) => value.userID === values.userID)
 
-    //     console.log(userConfirmed)
+        console.log(userConfirmed)
 
-    //     const updates = {
-    //         [`videoCall/${userConfirmed.userID}/isAccepted`]: true
-    //     };
+        const updates = {
+            [`videoCall/${userConfirmed.userID}/isAccepted`]: true
+        };
 
-    //     console.log(updates)
-    //     // Get a reference to the database
-    //     const dbRef = ref(database);
+        console.log(updates)
+        // Get a reference to the database
+        const dbRef = ref(database);
 
-    //     // Update the specified location with the updates object
-    //     try {
-    //         await update(dbRef, updates);
-    //         console.log(`User with ID ${userConfirmed.userID} has been confirmed.`);
-    //     } catch (error) {
-    //         console.error('Error updating user confirmation:', error);
-    //     }
-    // }
+        // Update the specified location with the updates object
+        try {
+            await update(dbRef, updates);
+            console.log(`User with ID ${userConfirmed.userID} has been confirmed.`);
+        } catch (error) {
+            console.error('Error updating user confirmation:', error);
+        }
+    }
 
     return (
         <>
@@ -61,8 +59,8 @@ export default function CheckScheduled() {
                     {schedules?.map((value, index) => {
                         return (<li key={index} className={style.schedule}>Saturday, 29 Feb {value.username}
                             <Link to="/doctor/meeting" state={{ userID: value.userID }}>
-                                {/* <img src={check} alt="check" className={style.check} onClick={() => handleConfirm(value)} /> */}
-                                <img src={check} alt="check" className={style.check} />
+                                <img src={check} alt="check" className={style.check} onClick={() => handleConfirm(value)} />
+                                {/* <img src={check} alt="check" className={style.check} /> */}
                             </Link>
                         </li>)
                     })}
